@@ -29,18 +29,15 @@ const Index = () => {
             <div className="p-3 bg-primary/20 rounded-full mr-4">
               <Shield className="h-8 w-8 text-primary" />
             </div>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
-              AI-Powered Emergency Response
-            </Badge>
+            
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
-            Crisis Command Center
+            Disaster Management System  
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Real-time disaster coordination platform with AI-powered prediction, 
-            resource optimization, and multi-agency emergency response management
+            
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -52,14 +49,7 @@ const Index = () => {
               <Activity className="mr-2 h-5 w-5" />
               Enter Command Center
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 py-6 border-2"
-            >
-              <MapPin className="mr-2 h-5 w-5" />
-              View Demo
-            </Button>
+            
           </div>
         </div>
       </div>
