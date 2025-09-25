@@ -49,43 +49,33 @@ export const useRealTimeData = () => {
     const mockIncidents: Incident[] = [
       {
         id: 'INC001',
-        type: 'Cyclone Alert',
+        type: 'Flood Warning',
         severity: 'critical',
-        location: { lat: 11.0168, lng: 76.9558 }, // Coimbatore
-        description: 'Severe cyclonic storm approaching coastal areas. High winds and heavy rainfall expected.',
+        location: { lat: 40.7128, lng: -74.0060 },
+        description: 'Major flooding detected in downtown area. Water level rising rapidly.',
         status: 'active',
         timestamp: new Date().toISOString(),
         resourcesAssigned: ['RES001', 'RES003']
       },
       {
         id: 'INC002',
-        type: 'Flash Flood',
+        type: 'Building Fire',
         severity: 'high',
-        location: { lat: 13.0827, lng: 80.2707 }, // Chennai
-        description: 'Heavy rainfall causing waterlogging in low-lying areas. Traffic severely affected.',
+        location: { lat: 40.7580, lng: -73.9855 },
+        description: 'Structure fire reported in residential complex. Multiple units involved.',
         status: 'active',
         timestamp: new Date(Date.now() - 300000).toISOString(),
         resourcesAssigned: ['RES002']
       },
       {
         id: 'INC003',
-        type: 'Landslide Warning',
+        type: 'Traffic Accident',
         severity: 'medium',
-        location: { lat: 11.4064, lng: 76.6932 }, // Nilgiris
-        description: 'Heavy rainfall triggering landslides in hilly areas. Road blockages reported.',
+        location: { lat: 40.7505, lng: -73.9934 },
+        description: 'Multi-vehicle accident blocking major intersection.',
         status: 'responding',
         timestamp: new Date(Date.now() - 600000).toISOString(),
         resourcesAssigned: ['RES004']
-      },
-      {
-        id: 'INC004',
-        type: 'Heat Wave',
-        severity: 'medium',
-        location: { lat: 11.3410, lng: 77.7172 }, // Salem
-        description: 'Extreme heat conditions affecting public health. Emergency cooling centers activated.',
-        status: 'monitoring',
-        timestamp: new Date(Date.now() - 900000).toISOString(),
-        resourcesAssigned: []
       }
     ];
 
@@ -94,7 +84,7 @@ export const useRealTimeData = () => {
         id: 'RES001',
         type: 'ambulance',
         status: 'deployed',
-        location: { lat: 11.0168, lng: 76.9558 }, // Coimbatore
+        location: { lat: 40.7150, lng: -74.0070 },
         capacity: 2,
         assignedTo: 'INC001'
       },
@@ -102,7 +92,7 @@ export const useRealTimeData = () => {
         id: 'RES002',
         type: 'fire_truck',
         status: 'deployed',
-        location: { lat: 13.0827, lng: 80.2707 }, // Chennai
+        location: { lat: 40.7590, lng: -73.9865 },
         capacity: 6,
         assignedTo: 'INC002'
       },
@@ -110,7 +100,7 @@ export const useRealTimeData = () => {
         id: 'RES003',
         type: 'rescue_team',
         status: 'deployed',
-        location: { lat: 11.4064, lng: 76.6932 }, // Nilgiris
+        location: { lat: 40.7140, lng: -74.0050 },
         capacity: 8,
         assignedTo: 'INC001'
       },
@@ -118,7 +108,7 @@ export const useRealTimeData = () => {
         id: 'RES004',
         type: 'police_unit',
         status: 'deployed',
-        location: { lat: 11.3410, lng: 77.7172 }, // Salem
+        location: { lat: 40.7515, lng: -73.9944 },
         capacity: 2,
         assignedTo: 'INC003'
       },
@@ -126,22 +116,8 @@ export const useRealTimeData = () => {
         id: 'RES005',
         type: 'ambulance',
         status: 'available',
-        location: { lat: 12.9716, lng: 77.5946 }, // Bangalore border
+        location: { lat: 40.7300, lng: -73.9950 },
         capacity: 2
-      },
-      {
-        id: 'RES006',
-        type: 'coast_guard',
-        status: 'available',
-        location: { lat: 8.7642, lng: 78.1348 }, // Tuticorin
-        capacity: 10
-      },
-      {
-        id: 'RES007',
-        type: 'ndrf_team',
-        status: 'standby',
-        location: { lat: 10.7905, lng: 78.7047 }, // Trichy
-        capacity: 15
       }
     ];
 
@@ -154,19 +130,13 @@ export const useRealTimeData = () => {
     // Fetch real weather data
     fetchWeatherData();
 
-    // Simulate seismic data for Tamil Nadu
+    // Simulate seismic data
     setSeismicData([
       {
-        magnitude: 3.2,
-        depth: 12,
-        location: 'Western Ghats, Tamil Nadu',
+        magnitude: 2.1,
+        depth: 15,
+        location: 'New York Metropolitan Area',
         timestamp: new Date(Date.now() - 3600000).toISOString()
-      },
-      {
-        magnitude: 2.8,
-        depth: 8,
-        location: 'Eastern Coast, Tamil Nadu',
-        timestamp: new Date(Date.now() - 7200000).toISOString()
       }
     ]);
 
@@ -210,29 +180,18 @@ export const useRealTimeData = () => {
   };
 
   const generateNewIncident = () => {
-    const incidentTypes = ['Medical Emergency', 'Gas Leak', 'Power Outage', 'Road Closure', 'Water Main Break', 'Coastal Erosion', 'Tree Fall', 'Building Collapse'];
+    const incidentTypes = ['Medical Emergency', 'Gas Leak', 'Power Outage', 'Road Closure', 'Water Main Break'];
     const severities = ['low', 'medium', 'high', 'critical'];
-    const tamilNaduCities = [
-      { lat: 13.0827, lng: 80.2707, name: 'Chennai' },
-      { lat: 11.0168, lng: 76.9558, name: 'Coimbatore' },
-      { lat: 9.9252, lng: 78.1198, name: 'Madurai' },
-      { lat: 10.7905, lng: 78.7047, name: 'Trichy' },
-      { lat: 11.3410, lng: 77.7172, name: 'Salem' },
-      { lat: 8.7642, lng: 78.1348, name: 'Tuticorin' },
-      { lat: 12.2958, lng: 76.6394, name: 'Mysore Border' }
-    ];
-    
-    const randomCity = tamilNaduCities[Math.floor(Math.random() * tamilNaduCities.length)];
     
     const newIncident: Incident = {
-      id: `TN${String(incidents.length + 1).padStart(3, '0')}`,
+      id: `INC${String(incidents.length + 1).padStart(3, '0')}`,
       type: incidentTypes[Math.floor(Math.random() * incidentTypes.length)],
       severity: severities[Math.floor(Math.random() * severities.length)],
       location: {
-        lat: randomCity.lat + (Math.random() - 0.5) * 0.05,
-        lng: randomCity.lng + (Math.random() - 0.5) * 0.05
+        lat: 40.7 + Math.random() * 0.1,
+        lng: -74.0 + Math.random() * 0.1
       },
-      description: `Emergency reported in ${randomCity.name} area through Tamil Nadu emergency services.`,
+      description: 'New incident reported through emergency services.',
       status: 'reported',
       timestamp: new Date().toISOString(),
       resourcesAssigned: []
